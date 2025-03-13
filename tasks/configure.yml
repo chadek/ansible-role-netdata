@@ -1,0 +1,19 @@
+---
+- name: Netdata | Apply netdata.conf template
+  ansible.builtin.template:
+    src: netdata.conf.j2
+    dest: /etc/netdata/netdata.conf
+    owner: "root"
+    group: "root"
+    mode: '0644'
+  notify: Restart netdata
+
+- name: Netdata | Apply stream.conf template
+  ansible.builtin.template:
+    src: stream.conf.j2
+    dest: /etc/netdata/stream.conf
+    owner: "root"
+    group: "root"
+    mode: '0644'
+  notify: Restart netdata
+  when: vault_netdata_client_key is defined or vault_netdata_server_keys is defined

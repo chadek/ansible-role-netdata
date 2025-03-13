@@ -1,0 +1,56 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: podman
+platforms:
+  - name: client
+    image: "docker.io/geerlingguy/docker-ubuntu2404-ansible:latest"
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    cgroupns_mode: host
+    privileged: true
+    pre_build_image: true
+  - name: server
+    image: "docker.io/geerlingguy/docker-ubuntu2404-ansible:latest"
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    cgroupns_mode: host
+    privileged: true
+    pre_build_image: true
+provisioner:
+  name: ansible
+  inventory:
+    host_vars:
+      client:
+        vault_netdata_client_key: "11111111-2222-3333-4444-555555555555"
+        netdata_stream_conf: {
+            enabled: yes,
+            destination: "10.0.2.100:19999",
+            api key: "{{ vault_netdata_client_key }}"
+        }
+      server:
+        vault_netdata_server_keys: {
+          00000000-1111-2222-3333-444444444444: "ephemeral",
+          11111111-2222-3333-4444-555555555555: "replication"
+        }
+        netdata_stream_type: {
+          ephemeral:
+            {
+              enabled: "yes",
+              history: "1h",
+              default memory: "ram",
+              health enabled: "auto",
+            },
+          replication:
+            {
+              enabled: "yes",
+              replication period: "1d",
+              replication step: "10m",
+              health enabled: "auto"
+            }
+          }
+verifier:
+  name: ansible

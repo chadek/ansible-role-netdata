@@ -1,0 +1,10 @@
+{% for block, conf in netdata_conf.items() %}
+[{{ block }}]
+{% for key, value in conf.items() %}
+{% if value is boolean %}
+{{ key }} = {{ 'true' if value else 'false' }}
+{% else %}
+{{ key }} = {{ value }} 
+{% endif %}
+{% endfor %}
+{% endfor %}

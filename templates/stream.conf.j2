@@ -1,0 +1,24 @@
+{% if vault_netdata_client_key is defined %}
+[stream]
+{% for key, value in netdata_stream_conf.items() %}
+{% if value is boolean %}
+{{ key }} = {{ 'true' if value else 'false' }}
+{% else %}
+{{ key }} = {{ value }}
+{% endif %}
+{% endfor %}
+{% endif %}
+
+{% if vault_netdata_server_keys is defined %}
+{% for api_key, type_name in vault_netdata_server_keys.items() %}
+[{{ api_key }}]
+{% for key, value in netdata_stream_type[type_name].items() %}
+{% if value is boolean %}
+{{ key }} = {{ 'true' if value else 'false' }}
+{% else %}
+{{ key }} = {{ value }}
+{% endif %}
+{% endfor %}
+
+{% endfor %}
+{% endif %}
