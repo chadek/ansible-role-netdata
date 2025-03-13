@@ -1,13 +1,13 @@
 ---
 galaxy_info:
-  role_name: mattermost
+  role_name: netdata
   author: chadek
-  description: ansible role to install and setup mattermost for linux
+  description: ansible role to install and setup netdata for linux
   company: Green-house
   license: license GPL-3.0-only
   min_ansible_version: "2.4"
   galaxy_tags:
-    - mattermost
+    - netdata
 
 dependencies:
   []
