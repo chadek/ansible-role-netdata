@@ -1,6 +1,6 @@
 ---
 # Netdata PPA gpg fingerprint
-netdata_apt_gpg_fingerprint: "6588FDD7B14721FE7C3115E6F9177B5265F56346"
+netdata_apt_gpg_fingerprint: "6E155DC153906B73765A74A99DD4A74CECFA8F4F"
 
 ##### README #######
 # Configuration values can  be any valid netdata configuration variable
@@ -40,7 +40,7 @@ netdata_conf: {
         # home: /var/lib/netdata
         # registry: /var/lib/netdata/registry
         # stock health config: /usr/lib/netdata/conf.d/health.d
-        # health config: /etc/netdata/health.d}
+        # health config: /etc/netdata/health.d
   },
 
   # Database confgiguration
