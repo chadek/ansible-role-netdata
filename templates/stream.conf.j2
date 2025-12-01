@@ -1,4 +1,4 @@
-{% if vault_netdata_client_key is defined %}
+{% if netdata_stream_conf is defined %}
 [stream]
 {% for key, value in netdata_stream_conf.items() %}
 {% if value is boolean %}
