@@ -173,22 +173,22 @@ netdata_conf: {
 # Example of server configuration. Stream type name of can be anything
 # you provide in the vault_netdata_server_keys.
 # If host should receive data from others
-# netdata_stream_type: {
-#   ephemeral:
-#     {
-#       enabled: "yes",
-#       history: "1h",
-#       default memory: "ram",
-#       health enabled: "auto",
-#     },
-#   replication:
-#     {
-#       enabled: "yes",
-#       replication period: "1d",
-#       replication step: "10m",
-#       health enabled: "auto"
-#     }
-# }
+      # netdata_stream_type: {
+      #   ephemeral:
+      #     {
+      #       enabled: "yes",
+      #       history: "1h",
+      #       default memory: "ram",
+      #       health enabled: "auto",
+      #     },
+      #   replication:
+      #     {
+      #       enabled: "yes",
+      #       replication period: "1d",
+      #       replication step: "10m",
+      #       health enabled: "auto"
+      #     }
+      # }
 # netdata_stream_type_custom1:
 #  {
     # enabled: yes,
