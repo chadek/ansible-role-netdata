@@ -16,4 +16,4 @@
     group: "root"
     mode: '0644'
   notify: Restart netdata
-  when: vault_netdata_client_key is defined or vault_netdata_server_keys is defined
+  when: netdata_stream_conf is defined
