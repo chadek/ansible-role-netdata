@@ -17,3 +17,13 @@
     mode: '0644'
   notify: Restart netdata
   when: netdata_stream_conf is defined
+
+- name: Netdata | Apply exporting.conf template
+  ansible.builtin.template:
+    src: exporting.conf.j2
+    dest: /etc/netdata/exporting.conf
+    owner: "root"
+    group: "root"
+    mode: '0644'
+  notify: Restart netdata
+  when: netdata_exporting_conf is defined
