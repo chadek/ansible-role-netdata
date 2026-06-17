@@ -1,0 +1,13 @@
+{% if netdata_exporting_conf is defined %}
+{% for section, settings in netdata_exporting_conf.items() %}
+[{{ section }}]
+{% for key, value in settings.items() %}
+{% if value is boolean %}
+{{ key }} = {{ 'yes' if value else 'no' }}
+{% else %}
+{{ key }} = {{ value }}
+{% endif %}
+{% endfor %}
+
+{% endfor %}
+{% endif %}
